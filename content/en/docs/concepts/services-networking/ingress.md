@@ -371,6 +371,10 @@ Referencing this secret in an Ingress tells the Ingress controller to
 secure the channel from the client to the load balancer using TLS. You need to make
 sure the TLS secret you created came from a certificate that contains a Common
 Name (CN), also known as a Fully Qualified Domain Name (FQDN) for `sslexample.foo.com`.
+Additionally, keep in mind that TLS will not work on the default rule because the
+certificates would have to be issued for all the possible sub-domains. Therefore,
+`hosts` in the `tls` section need to explicitly match the `host` in the `rules`
+section. 
 
 {{< codenew file="service/networking/tls-example-ingress.yaml" >}}
 
