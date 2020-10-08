@@ -371,10 +371,13 @@ Referencing this secret in an Ingress tells the Ingress controller to
 secure the channel from the client to the load balancer using TLS. You need to make
 sure the TLS secret you created came from a certificate that contains a Common
 Name (CN), also known as a Fully Qualified Domain Name (FQDN) for `sslexample.foo.com`.
-Additionally, keep in mind that TLS will not work on the default rule because the
+
+{{< note >}}
+Keep in mind that TLS will not work on the default rule because the
 certificates would have to be issued for all the possible sub-domains. Therefore,
 `hosts` in the `tls` section need to explicitly match the `host` in the `rules`
-section. 
+section.
+{{< /note >}}
 
 {{< codenew file="service/networking/tls-example-ingress.yaml" >}}
 
@@ -513,4 +516,3 @@ You can expose a Service in multiple ways that don't directly involve the Ingres
 * Learn about the [Ingress API](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/#ingress-v1beta1-networking-k8s-io)
 * Learn about [Ingress controllers](/docs/concepts/services-networking/ingress-controllers/)
 * [Set up Ingress on Minikube with the NGINX Controller](/docs/tasks/access-application-cluster/ingress-minikube/)
-
